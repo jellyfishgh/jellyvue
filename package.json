@@ -1,0 +1,39 @@
+{
+    "name": "jellyvue",
+    "version": "1.0.0",
+    "description": "vue practices of jellyfish",
+    "scripts": {
+        "test": "mocha",
+        "babelify": "babel src -d public/dist",
+        "browserify1": "browserify public/dist/index-app.js -o public/bundle/index-app.bundle.js",
+        "uglify1": "uglifyjs public/bundle/index-app.bundle.js -c -o public/bundle/index-app.bundle.min.js",
+        "build": "node tool.js && npm run babelify && npm run browserify1 && npm run uglify1",
+        "browserify2": "browserify public/dist/html-index.js -t aliasify -o public/bundle/html-index.bundle.js",
+        "uglify2": "uglifyjs public/bundle/html-index.bundle.js -c -o public/bundle/html-index.bundle.min.js",
+        "build2": "npm run babelify && npm run browserify2 && npm run uglify2",
+        "start": "npm run build && http-server ./public -p 3000"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jellyfishgh/jellyvue.git"
+    },
+    "keywords": [
+        "vue"
+    ],
+    "author": "jellyfishgh",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jellyfishgh/jellyvue/issues"
+    },
+    "homepage": "https://github.com/jellyfishgh/jellyvue#readme",
+    "dependencies": {
+        "vue": "^2.0.5"
+    },
+    "devDependencies": {
+        "aliasify": "^2.1.0",
+        "babel-cli": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0",
+        "http-server": "^0.9.0"
+    },
+    "aliasify": "./aliasifyConfig.js"
+}
